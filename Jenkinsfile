@@ -40,7 +40,7 @@ pipeline {
                     sh 'mvn clean package'
                     //def version = (readFile('pom.xml') =~ '<version>(.+)</version>')[0][2]
                    // env.IMAGE_NAME = "$version-$BUILD_NUMBER"
-                   // sh "docker build -t jeelkanani41/jenkins:lst ."
+                    sh "docker build -t jeelkanani41/jenkins:lst ."
                         
                     }
             }
@@ -68,8 +68,8 @@ pipeline {
             steps {
                 script{echo 'deploying the application'
                 withCredentials([usernamePassword(credentialsId: 'docker', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]){
-                    sh "echo ${PASSWORD} | docker login -u ${USERNAME} --password-stdin"
-                    sh "docker push jeelkanani41/jenkins:lstgit   "
+                    sh "echo ${PASSWORD} | docker login -u ${USERNAME} --password-${PASSWORD}"
+                     sh "docker push jeelkanani41/jenkins:lst"
                 }}
                 
              }
