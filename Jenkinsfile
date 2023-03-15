@@ -97,13 +97,13 @@ pipeline {
     }
     post{
         always{
-            echo 'Executing always .....'
+            echo 'Executing always'
         }
         success{
-            echo 'Executing success ....'
+            echo 'Executing success'
         }
         failure{
-            echo 'Executing failure ......'
+            echo 'Executing failure'
         }
     }
 }
