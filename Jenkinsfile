@@ -79,12 +79,12 @@ pipeline {
             steps{
                 script{
                     withCredentials([usernamePassword(credentialsId: 'git-credentials', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]){
-//                         sh 'git config --global user.email "jenkins@example.com"'
-//                         sh 'git config --global user.name "jenkins"'
+                       sh 'git config --global user.email "jenkins@example.com"'
+                       sh 'git config --global user.name "jenkins"'
 
                         sh 'git status'
                         sh 'git branch'
-//                         sh 'git config --list'
+                        sh 'git config --list'
 
                         sh "git remote set-url origin https://${USERNAME}:${PASSWORD}@github.com/jeelkanani/Jenkins.git"
                         sh 'git add .'
