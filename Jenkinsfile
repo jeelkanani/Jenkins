@@ -86,7 +86,7 @@ pipeline {
                         sh 'git branch'
                         sh 'git config --list'
 
-                        sh "git remote add origin https://${USERNAME}:${PASSWORD}@github.com/jeelkanani/Jenkins.git"
+                        sh "git remote set-url origin https://${USERNAME}:${PASSWORD}@github.com/jeelkanani/Jenkins.git"
                         sh 'git add .'
                         sh 'git commit -m "version change"'
                         sh "git push -u origin master"
