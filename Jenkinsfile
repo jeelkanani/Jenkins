@@ -86,10 +86,13 @@ pipeline {
                         sh 'git checkout master'
                         sh 'git config --list'
                       // sh "git remote set-url origin https://${USERNAME}:${PASSWORD}@github.com/jeelkanani/Jenkins.git"
-                        sh 'git add .'
+                       // sh 'git add .'
+                        sh("(cd Jenkins && git add .)")
                          sh 'git status'
-                        sh 'git commit -am "version change"'
-                        sh "git push origin master"
+                        //sh 'git commit -am "version change"'
+                        sh("(cd Jenkins && git commit -m 'daily backup')")
+                        //sh "git push origin master"
+                        sh('(cd Jenkins && git push master)')
                                         }
                 }
             }
