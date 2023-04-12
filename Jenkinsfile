@@ -41,7 +41,7 @@ pipeline {
                     def version = (readFile('pom.xml') =~ '<version>(.+)</version>')[0][2]
                    env.IMAGE_NAME = "$version-$BUILD_NUMBER"
                     sh "docker build -t jeelkanani41/spring-boot:${IMAGE_NAME} ."
-                    sh "docker run -it -d jeelkanani41/spring-boot:${IMAGE_NAME} "   
+                    sh "docker run -it -d -p 80:8080 jeelkanani41/spring-boot:${IMAGE_NAME} "   
                     }
             }
         }
@@ -53,7 +53,9 @@ pipeline {
           }
             steps {
                 script{echo 'testing the application'
-                sh 'mvn test'}
+                sh 'mvn test'
+                 
+                  }
             }
         }
       stage('deploy') {
