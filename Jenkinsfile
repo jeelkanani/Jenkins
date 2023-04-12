@@ -75,29 +75,29 @@ pipeline {
                 
              }
         }
-        stage('commit version update'){
-            steps{
-                script{
-                    withCredentials([usernamePassword(credentialsId: 'git-credentials', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]){
-                       sh 'git config --global user.email "jenkins@example.com"'
-                       sh 'git config --global user.name "jenkins"'
+//         stage('commit version update'){
+//             steps{
+//                 script{
+//                     withCredentials([usernamePassword(credentialsId: 'git-credentials', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]){
+//                        sh 'git config --global user.email "jenkins@example.com"'
+//                        sh 'git config --global user.name "jenkins"'
 
-                        sh 'git status'
-                        sh 'git checkout master'
-                        sh 'git config --list'
-                      // sh "git remote set-url origin https://${USERNAME}:${PASSWORD}@github.com/jeelkanani/Jenkins.git"
-                        sh 'git add .'
-                        //sh("(cd Jenkins && git add .)")
-                         sh 'git status'
-                        sh 'git commit -am "version change"'
-                       // sh("(cd Jenkins && git commit -m 'daily backup')")
-                        sh "git push origin master"
-                       // sh('(cd Jenkins && git push master)')
+//                         sh 'git status'
+//                         sh 'git checkout master'
+//                         sh 'git config --list'
+//                       // sh "git remote set-url origin https://${USERNAME}:${PASSWORD}@github.com/jeelkanani/Jenkins.git"
+//                         sh 'git add .'
+//                         //sh("(cd Jenkins && git add .)")
+//                          sh 'git status'
+//                         sh 'git commit -am "version change"'
+//                        // sh("(cd Jenkins && git commit -m 'daily backup')")
+//                         sh "git push origin master"
+//                        // sh('(cd Jenkins && git push master)')
                                         }
-                }
-            }
-        }
-    }
+//                 }
+//             }
+//         }
+//     }
     post{
         always{
             echo 'Executing always......'
